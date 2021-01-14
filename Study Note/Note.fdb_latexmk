@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1610640350 "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.tex" "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf" "Note" 1610640350
+["pdflatex"] 1610641903 "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.tex" "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf" "Note" 1610641904
   "/etc/texmf/web2c/texmf.cnf" 1588438941 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/ian/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1588439839 14040 eb065bfa625b4fe8c9dda8d2d5f14f84 ""
-  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.aux" 1610640350 392 292d0540d5a25844e21c7538b5ce27b7 ""
-  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.tex" 1610640350 8561 5088c764e56023980873537f33817d6e ""
+  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.aux" 1610641904 392 292d0540d5a25844e21c7538b5ce27b7 ""
+  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.tex" 1610641903 8562 478b565eaf3b936a643e033957db928b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -166,13 +166,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1583234869 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1603430679 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1603430682 4898729 b399627536ba58a8d394162836abec3f ""
-  "Note.aux" 1610640350 392 292d0540d5a25844e21c7538b5ce27b7 ""
-  "Note.tex" 1610640350 8561 5088c764e56023980873537f33817d6e ""
-  "Note.toc" 1610640350 188 9f6d5380369792b58f8dec452efb21fd ""
+  "Note.aux" 1610641904 392 292d0540d5a25844e21c7538b5ce27b7 ""
+  "Note.tex" 1610641903 8562 478b565eaf3b936a643e033957db928b ""
+  "Note.toc" 1610641904 188 9f6d5380369792b58f8dec452efb21fd ""
   (generated)
-  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf"
   "Note.pdf"
+  "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf"
   "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.log"
   "Note.log"
-  "Note.aux"
   "Note.toc"
+  "Note.aux"
