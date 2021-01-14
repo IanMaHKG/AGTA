@@ -1,0 +1,177 @@
+% default 12pt
+\documentclass[12pt]{article}
+ 
+% \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend,bm}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{pgfpages}
+\usepackage{multicol}
+% % For shrinking 4 pages to 1
+% \pgfpagesuselayout{4 on 1}[a4paper, border shrink=0mm]
+% 2 in 1
+% \pgfpagesuselayout{2 on 1}[a4paper, border shrink=0mm, landscape]
+
+\setlength{\parskip}{0em}
+\setlength{\parindent}{0em}
+\setlist[enumerate]{itemsep=0mm}
+\setlist[itemize]{itemsep = 0mm}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{DEFINITION}
+
+
+\pagestyle{fancy}
+
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+
+\newtheorem*{theorem}{THEOREM}
+
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\uline}[1]{\rule[0pt]{#1}{0.4pt}}
+\newcommand{\trace}[1]{\text{tr}(#1)}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\Maps}{\text{Maps}}
+\newcommand{\image}{\text{im}}
+\newcommand{\Mat}{\text{Mat}}
+\newcommand{\suchthat}{\text{ s.t. }}
+\newcommand{\sgn}{\textbf{sgn}}
+\newcommand{\adj}{\text{adj}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\transpose}[1]{#1^\mathsf{T}}
+\newcommand{\Prob}[1]{\mathbb{P}(#1)}
+\newcommand{\Expect}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\Var}[1]{\text{Var}\left[#1\right]}
+\newcommand{\Cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\MonteCarlo}[1]{\hat{\mathbb{E}}\left[#1\right]}
+
+%Set the course name here
+\newcommand{\coursename}{Algorithmic Game Theory and Applications}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem[number within=section]{mytheo}{Theorem}
+{colback=red!5,colframe=red!35!black,fonttitle=\bfseries}{th}
+\newtheorem{lemma}{LEMMA}[subsection]
+\newtheorem{prop}{PROPOSITION}[subsection]
+\newtheorem{corollary}{COROLLARY}[subsection]
+\newtheorem{example}{EXAMPLE}[subsection]
+ 
+\lhead{\coursename}
+\rhead{Study Note}
+
+\title{\coursename\\Study Note}
+\author{Ian S.W. Ma}
+\date{Winter, Spring 2021}
+
+ 
+ 
+\begin{document}
+\maketitle
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\pagenumbering{gobble}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\setcounter{section}{-1}
+
+\section{Useful Notations}
+    \begin{enumerate}
+        \item A mixed strategy $\bm{x_i} \in X_i$ is \textbf{pure} if $!\exists j \in S_i \suchthat x_i(j) = 1, x_i(j') = 0 \ \forall j' \neq j$. Such strategy is denoted $\pi_{i,j}$.
+        \item Given a mixed strategies $x = (x_1,...,x_n) \in X$, we denote $x_{-i} = (x_1,...,x_{i-1},x_{i+1},...,x_n)$ as everybody's but player $i$'s strategies.
+        \item For Profile of mixed strategies $x \in X$ and mix strategy $y_i \in X_i$, we denote the new profile $(x_{-i};y_i) = (x_i,...,x_{i-1},y_i,x_{i+1},x_n)$, where the new profile replaces $x_i$ with $y_i$. 
+        \end{enumerate}
+
+% Section 1
+\section{Basics of Game Theory}
+    \begin{definition}[Game Theory]
+        \textbf{Game Theory} is the formal study if interaction between \textit{goal-oriented agents (players)} and the strategic scenarios that arise such settings.
+    \end{definition}
+    \begin{definition}[Algorithmic Game Theory]
+        \textbf{Algorithmic Game Theory} is concerned with the computational questions that arise in game theory, ans that enlighten game theory. In particular, questions about finding efficient algorithms to 'solve' games.
+    \end{definition}
+    \begin{definition}[Zero-sum Game]
+        Total payoff of all player is zero, for all possible outcomes.
+    \end{definition}
+
+    \subsection*{Nash Equilibria}
+        \begin{definition}[Nash Equilibria]
+            A pair ($n$-tuple) of strategies for the 2 players ($n$ players) such that no player can benefit by only changing his/her own strategy.
+        \end{definition}
+        \begin{theorem}[Nash's Theorem]
+            Every (finite) game has a mixed Nash Equilibrium.
+        \end{theorem}
+    
+    \subsection*{Form of Game}
+    \begin{itemize}
+        \item \textbf{Normal Form/Strategic Form}: all players choose strategies simultaneously
+        \item \textbf{Extensive Form}: thew game is played by a sequence of move (eg. take turns), might be showned as a game tree (See lecture 1 page 9)
+    \end{itemize}
+
+    \subsection*{Perfect Information}
+    A game tree is made up by numbers of nodes, which are connected by a set of strategies/moves. Some nodes are controlled by a player, and some neither, which are called \textbf{chance nodes}. The set of possible strategies/moves-lead nodes from the same nodes is the \textbf{information set}. A game where every information set have only 1 node is called a \textbf{game of perfectr information}.
+    \begin{theorem}
+        Any finite $n$-person extensive game of perfect information has an \textbf{equilibruim in pure strategies}
+    \end{theorem}
+
+    \subsection*{Strategic form Game}
+    \begin{definition}
+        A \textbf{strategic form game} $\Gamma$ with $n$ players, consists of:
+            \begin{itemize}
+                \item A set of players $N = \{1,...,n\}$
+                \item Set of pure strategies $S_i \ \forall i \in N$, The set of all possible combinations of strategies is denoted $S = \prod_{i\in N}S_i$
+                \item A payoff function(utility) function $u_i:S\mapsto\mathbb{R}$ for each $i \in N$ describes the payoff $u_i(s_1,...,s_n)$ to player $i$ ubder each combination of strategies.
+            \end{itemize}
+    \end{definition}
+
+    \begin{definition}
+        A \textbf{finite strategic form game} $\Gamma$ with $n$ players, consists of:
+            \begin{itemize}
+                \item A set of players $N = \{1,...,n\}$
+                \item Set of pure strategies $S_i = \{1,...,m_i\} \ \forall i \in N$, The set of all possible combinations of pure strategies is denoted $S = \prod_{i\in N}S_i$
+                \item A payoff function(utility) function $u_i:S\mapsto\mathbb{R}$ for each $i \in N$ describes the payoff $u_i(s_1,...,s_n)$ to player $i$ under each combination of strategies.
+            \end{itemize}
+    \end{definition}
+
+    \begin{definition}[Zero-sum Game]
+        $$\sum_{i \in N} u_i(s) = 0 \ \forall s \in S \Leftrightarrow \ \Gamma\text{ is a zero-sum game}$$
+    \end{definition}
+
+    \subsection*{Mixed (Ramdomized) Strategies}
+        \begin{definition}[Mixed Strategy]
+            A \textbf{mixed strategy} $\bm{x_i}$ for player $i$ with $S_i = \{1,...,m_i\}$ is a probability distribution over $S_i$. In other words $\bm{x_i} = \left(x_i(1),...,x_i(m_i)\right)$, where $x_i(s) \in [1,0] \ \forall s \in S_i$ and $\sum_{s\in S_i}{x_i(s)} = 0$
+        \end{definition}
+        
+        Let $X_i$ be the set of all possible mixed strategies $\bm{x_i}$ for player $i$, then for an $n$-player game, $X = X_1 \times ... \times X_n$ denotes the set of all possible combinations/profiles of mixed strategies.
+
+    \subsection*{Expected Payoffs}
+        Here we let $x = (\bm{x_1},...,\bm{x_n}) \in X$ a profile of mixed strategies. For $s = (s_1,...,s_n) \in S$ a combination of pure strategies, let $x(s) = \prod_{i \in N}x_i(s_i)$ be the probability of combination $s$ ubder mixed profile $x$.
+        \begin{definition}[Expected Payoff]
+            The expected playoff of player $i$ under a mixed strategy profile $x = (\bm{x_1},...,\bm{x_n}) \in X$, is: $U_i(x) = \sum_{s \in S}x(s)u_i(s)$ where $u_i(s)$ denoted the payoff of player $i\in N$ with pure strategy $s \in S$.
+        \end{definition}
+        In fact, this is the same as $\Expect{u|i,x} = \sum_{s \in S}\Prob{s}u_i(s)$, where $U_i(x) = \Expect{u|i,x}$ and $\Prob{s} = x(s)$.
+    
+    \subsection*{Best Responses}
+        \begin{definition}[Best Response]
+            A (mixed) strategy $z_i \in X_i$ is a \textbf{best response} for player $i$ to $x_{-i}$ if \\$U_i(x_{-1};z_i) \geq U_i(x_{-i};y_i) \ \forall y_i \in X_i$
+        \end{definition}
+
+\section{Nash Equilibrium}
+    \begin{definition}[Mixed Nash Equilibrium]
+        For a strategic game $\Gamma$, a strategy profile \\$x = (x_1,...,x_n) \in X$ is a \textbf{mixed Nash Equilibrium} if for every player $i$, $x_i$ is the best response to $x_{-i}$.
+    \end{definition}
+    A mixed Nash Equilibrium $x$ is a Nash Equilibrium if every $x_i \in x$ is a pure strategy $\pi_{i,j}$ for some $j \in S_i$
+    
+\end{document}
