@@ -18,8 +18,8 @@
 
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0em}
-\setlist[enumerate]{itemsep=0mm}
-\setlist[itemize]{itemsep = 0mm}
+\setlist[enumerate]{itemsep=0mm, topsep = 0mm}
+\setlist[itemize]{itemsep = 0mm, topsep = 0mm}
 
 \theoremstyle{definition}
 \newtheorem*{definition}{DEFINITION}
@@ -250,6 +250,16 @@
         $U_i(x^*) = U_i(x_{-i}^*;\pi_{i,j})$ whenever $x_i^*(j) > 0$
     \end{corollary}
 
-\section{Evolution as a game}
+\section{Symmetric Game}
+    \begin{definition}[Symmetric Game]
+        A 2-player game is \textbf{symmetric} if $S_1 = S_2$ and $u_1(s_1,s_2) = u_2(s_2,s_1) \ \forall s_1,s_2 \in S_1 $
+    \end{definition}
+    \begin{definition}[Evolutionarity Stable Strategy(ESS)]
+        In a 2-player symmetric game, a mixed strategy $x_1^*$ is an \textbf{evolutionarity stable strategy} if:
+            \begin{enumerate}
+                \item $x_1^*$ is a Nash Equilibrium, and
+                \item If $\exists x_1' \neq x_1^*$ another best response to $x_1^*$, then $U_1(x_1',x_1') < U_1(x_1*,x_1')$
+            \end{enumerate}
+    \end{definition}
 
 \end{document}

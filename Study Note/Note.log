@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.23)  19 JAN 2021 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.23)  19 JAN 2021 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,13 +616,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--212
 Here is how much of TeX's memory you used:
  16097 strings out of 482862
  306740 string characters out of 5958883
- 571221 words of memory out of 5000000
+ 571265 words of memory out of 5000000
  31061 multiletter control sequences out of 15000+600000
  546701 words of font info for 76 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 55i,11n,80p,880b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,80p,880b,398s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/ian/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf" (5 pages, 168166 bytes).
+Output written on "/home/ian/Documents/Alg_Game_Theory/Study Note/Note.pdf" (5 pages, 169139 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream

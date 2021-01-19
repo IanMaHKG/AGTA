@@ -16,4 +16,5 @@ This note is made by Siu Wang (Ian) Ma, 4th year Comouter Science and Mathematic
 | Date | Content |
 |---|---|
 | 14 Jan 2021 | Added notes for Lecture 1 and 2 |
-| 19 Jan 2021 | Finished Nash Equilibrium (LT 3), starting the ESS section on the same lecture |
+| 18 Jan 2021 | Finished Nash Equilibrium (LT 3), starting the ESS section on the same lecture |
+| 19 Jan 2021 | Finished Lecture 3 |
