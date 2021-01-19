@@ -16,19 +16,20 @@
 % 2 in 1
 % \pgfpagesuselayout{2 on 1}[a4paper, border shrink=0mm, landscape]
 
-\setlength{\parskip}{0em}
+\setlength{\parskip}{0.5em}
 \setlength{\parindent}{0em}
 \setlist[enumerate]{itemsep=0mm}
 \setlist[itemize]{itemsep = 0mm}
 
 \theoremstyle{definition}
 \newtheorem*{definition}{DEFINITION}
+\newtheorem*{Proof}{PROOF}
 
 
 \pagestyle{fancy}
 
-\let\newproof\proof
-\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \let\newproof\proof
+% \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
 
 \newtheorem*{theorem}{THEOREM}
 
@@ -62,8 +63,11 @@
 {colback=red!5,colframe=red!35!black,fonttitle=\bfseries}{th}
 \newtheorem{lemma}{LEMMA}[subsection]
 \newtheorem{prop}{PROPOSITION}[subsection]
-\newtheorem{corollary}{COROLLARY}[subsection]
+\newtheorem*{corollary}{COROLLARY}
 \newtheorem{example}{EXAMPLE}[subsection]
+
+\newenvironment{claim}[1]{\par\noindent\underline{Claim:}\space#1}{}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
  
 \lhead{\coursename}
 \rhead{Study Note}
@@ -168,10 +172,84 @@
             A (mixed) strategy $z_i \in X_i$ is a \textbf{best response} for player $i$ to $x_{-i}$ if \\$U_i(x_{-1};z_i) \geq U_i(x_{-i};y_i) \ \forall y_i \in X_i$
         \end{definition}
 
+    \subsection*{Social Walfare and Pareto Optimal/Efficient}
+        \begin{definition}[Social Walfare]
+            Given a profile $x \in X$ in an $n$-player game, the \textbf{social walfare} is $\sum_{i=1}^n U_i(x)$.
+        \end{definition}
+        \begin{definition}[Pareto Optimal/ Pareto Efficient]
+            Given an $n$-player game, a profile $x \in X$ is a \textbf{pareto optimal/efficient} if there is no other profile $x'$ such that $U_i(x) \leq U_i(x')$ for all players $i$, and $U_k(x) < U_k(x')$ for some player $k$.
+        \end{definition}
+
 \section{Nash Equilibrium}
     \begin{definition}[Mixed Nash Equilibrium]
         For a strategic game $\Gamma$, a strategy profile \\$x = (x_1,...,x_n) \in X$ is a \textbf{mixed Nash Equilibrium} if for every player $i$, $x_i$ is the best response to $x_{-i}$.
     \end{definition}
     A mixed Nash Equilibrium $x$ is a Nash Equilibrium if every $x_i \in x$ is a pure strategy $\pi_{i,j}$ for some $j \in S_i$.
     
+    \subsection*{Nash's Theorem}
+    Before understanding Nash's Theorem, we first take a look to the \textbf{Brouwer Fixed Point Theorem}.
+    \begin{theorem}[Brouwer Fixed Point Theorem]
+        Every continous $f: D \rightarrow D$ mapping a compact and convex, nonempty subset $D \subseteq \mathbb{R}^m$ to itself has a "fixed point". In other words: $\exists x^*, f(x^*) = x^*$
+    \end{theorem} 
+    Nash's theorem is as follow:
+    \begin{theorem}[Nash's Theorem]
+        Every (finite) game has a mixed Nash Equilibrium.
+    \end{theorem}
+
+    Using Brouwer Fixed Point Theorem, we can prove Nash's Theorem:
+    
+    \begin{Proof}[Proof of Nash's theorem]
+        We define a continous finction $f: X \rightarrow X$, where $X = X_1 \times ... \times X_n$, and we show that if $f(x^*) = x^*$ then $x^* = (x_1^*,...,x_n^*)$ must be a Nash Equilibrium.
+        
+        We now start a claim:
+        \begin{claim}
+            A profile $x^*= (x_1^*,...,x_n^*) \in X$ is a Nash Equilibrium i.f.f. for every player $i$ and pure strategy $\pi_{i,j}, j \in S_i$: $$U_i(x^*) \geq U_i(x_{-i}^*;\pi_{i,j})$$
+        \end{claim}
+        \begin{claimproof}
+            If $x^*$ is a NE then obviously $U_i(x^*) \geq U_i(x_{-i}^*;\pi_{i,j})$ by definition.\\
+            \\Now we have to proof the other direction: By calculation we can see that for any mixed strategy $x_i \in X_i$:
+            $U_i(x_{-i}^*;x_i) = \sum_{j \in S_i}x_i(j)U_i(x_{-i}^*;\pi_{i,j})$.
+            
+            By assumption, $U_i(x^*) \geq U_i(x_{-i}^*;\pi_{i,j}) \ \forall j \in S_i$ So, clearly: $U_i(x^*) \geq U_i(x_{-i}^*;\pi_{i,j})$ as :
+            $$U_i(x_{-i}^*; x_i) = \sum_{j \in S_i}x_i(j)U_i(x_{-i}^*; \pi_{i,j}) \leq \sum_{j \in S_i}x_i(j)U_i(x^*) = U_i(x^*)$$
+            Hence each $x_i^*$ is the best response to $x_{-i}^*$, therefore a NE.
+            
+            $\Rightarrow$ Claim true
+        \end{claimproof}
+
+        Now rephrasing the goal, we want to find $x^* = (x_1^*,...,x_n^*)$ such that $U_i(x_{-i}^*;\pi_{i,j}) \leq U_i(x^*)$ ie. $U_i(x_{-1}^*;\pi_{i,j}) - U_i(x^*) \leq 0$ for all players $i \in N$, and $j \in S_i$.
+        
+        For a mixed profile $x = (x_1,...,x_n) \in X$: let $\varphi_{i,j}(x) = \max\{0, U_i(x_{-i}^*;\pi_{i,j})\}$ measures "how much better off" player $i$ would be if picked $\pi_{i,j}$ instead of $x_i$.
+        
+        Define $f:X \rightarrow X$ as follows: For $x = (x_1,...,x_n) \in X$, let $f(x) = (x_1',...,x_n')$ where for all $i$ and $j \in S_i$: $$x_i'(j) = \frac{x_i(j) + \varphi_{i,j}(x)}{1 + \sum_{k \in S_i} \varphi_{i,k}(x)}$$
+        By Brouwer, $\exists x^* \in X, f(x^*) = x^*$.
+
+        Now we have to show $x^*$ is a NE.
+
+        For each $i \in N$, and $j \in S_i$, $\displaystyle x_i^*(j) = \frac{x_i^*(j) + \varphi_{i,j}(x^*)}{1 + \sum_{k \in S_i} \varphi_{i,k}(x^*)}$,
+        \\thus $x_i^*(j)\left(1 + \sum_{k \in S_i} \varphi_{i,k}(x^*)\right) = x_i^*(j) + \varphi_{i,j}(x^*)$
+        \\hence $x_i^*(j)\sum_{k \in S_i} \varphi_{i,k}(x^*) = \varphi_{i,j}(x^*)$
+
+        We now have to show that this implies that $\varphi_{i,j}(x^*)$ must be equal to  $0\ \forall j$
+
+        \begin{claim}
+            For any mixed profile $x$,, for each player $i$, $\exists j$ such that $x_i(j) > 0$ and $\varphi_{i,j}(x)$ = 0
+        \end{claim}
+        \begin{claimproof}
+            For any $x \in X$, $\varphi_{i,j} = \max\{0, U_i(x_{-i};\pi_{i,j}) - U_i)(x)\}$
+
+            Since $U_i(x)$ is the "weighted average" of $U_i(x_{-i};\pi_{i,j})$'s, based on the weights ($x_i(j)$) in $x_i$, there must be some $j$ used in $x_i$, ie, with $x_i(j) >  0$, such that $U_i(x_{-1}; \pi_{i,j})$ is no more than the average $\left(U_i(x_{-i};\pi_{i.j}) \leq U_i(x)\right)$, therefore $\varphi_{i,j}(x) = 0$.
+        \end{claimproof}
+
+        Thus, for such $j$, $x_i^*(j)\sum_{k \in S_i} \varphi_{i,k}(x^*) = \varphi_{i,j}(x^*) = 0$.
+
+        But, sice $\varphi_{i,k}(x^*) \geq 0 \ \forall k \in S_i$, this means $\varphi_{i,k}(x^*) \geq 0 \ \forall k \in S_i = 0$. Thus, for all $i \in N$, and $j \in S_i$: $U_i(x^*) \geq U_i(x_{-i}^*;\pi_{i.j})$ \hfill\textbf{Q.E.D}
+    \end{Proof}
+
+    \begin{corollary}
+        $U_i(x^*) = U_i(x_{-i}^*;\pi_{i,j})$ whenever $x_i^*(j) > 0$
+    \end{corollary}
+
+\section{Evolution as a game}
+
 \end{document}
