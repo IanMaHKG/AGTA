@@ -7,7 +7,7 @@ This note is made by Siu Wang (Ian) Ma, 4th year Comouter Science and Mathematic
 ## Contents
 | Section | Lecture |
 |---|---|
-| 0 | Some notaions |
+| 0 | Some notations |
 | 1 | Lecture 1, 2|
 | 2 | Lecture 2 |
 | 3 | Lecture 2 |
