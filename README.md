@@ -6,6 +6,9 @@ This note is made by Siu Wang (Ian) Ma, 4th year Comouter Science and Mathematic
 
 link to the course: https://www.inf.ed.ac.uk/teaching/courses/agta/
 
+## Here is a meme just for fun
+![](T69Nash.jpg)
+
 ## Contents
 | Section | Lecture |
 |---|---|
